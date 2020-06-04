@@ -15,17 +15,17 @@ async def start(c, m):
         )
     
     await m.reply_text(
-        text=f"Hello there {m.from_user.first_name}.\n\nI'm Night Screenshot Bot. I can provide screenshots from your video files with out downloading the entire file (almost instantly). For more details check /help.",
+        text=f"Hello {m.from_user.first_name}.\n\nI'm Night Screenshot. I can provide screenshots from your video files with out downloading the entire file (almost instantly). For more details check /help.",
         quote=True,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('📌  Leech Group', url='https://t.me/Leechsgroup'),
-                    InlineKeyboardButton('📣  Update Channel', url='https://t.me/BotUpdatebot')
+                    InlineKeyboardButton('📣  Update Channel', url='https://t.me/joinchat/AAAAAE7LN2nDxp9EzkthPw'),
+                    InlineKeyboardButton('📌  Leech Group', url='https://t.me/joinchat/OzszilP_FnoER7ip9FT9HA')
                 ],
                 [
-                    InlineKeyboardButton('📡  Movie channel', url='https://t.me/joinchat/AAAAAEz-e_b0qd105jGyuQ'),
-                    InlineKeyboardButton('👮  Owner', url='https://t.me/MuSkysM')
+                    InlineKeyboardButton('📡  Movie Channel', url='https://t.me/joinchat/AAAAAEz-e_b0qd105jGyuQ'),
+                    InlineKeyboardButton('👮  Master', url='https://t.me/MuSkysM')
                 ]
             ]
         )
