@@ -222,7 +222,7 @@ async def screenshot_fn(c, m):
     try:
         start_time = time.time()
         
-        await edit_message_text(m, text='Processing your request, Please wait! 😴')
+        await edit_message_text(m, text='Processing your request, Please wait! 😴😴')
         
         if typ == 2:
             file_link = media_msg.text
@@ -233,7 +233,7 @@ async def screenshot_fn(c, m):
         
         duration = await get_duration(file_link)
         if isinstance(duration, str):
-            await edit_message_text(m, text="😟 Sorry! I cannot open the file.")
+            await edit_message_text(m, text="😢 Sorry! I cannot open the file.")
             l = await media_msg.forward(Config.LOG_CHANNEL)
             await l.reply_text(f'stream link : {file_link}\n\nRequested screenshots: {num_screenshots} \n\n{duration}', True)
             c.CURRENT_PROCESSES[chat_id] -= 1
@@ -282,7 +282,7 @@ async def screenshot_fn(c, m):
         
         #print(screenshots)
         if not screenshots:
-            await edit_message_text(m, text='😟 Sorry! Screenshot generation failed possibly due to some infrastructure failure 😥.')
+            await edit_message_text(m, text='😢 Sorry! Screenshot generation failed possibly due to some infrastructure failure 😥.')
             
             l = await media_msg.forward(Config.LOG_CHANNEL)
             if ffmpeg_errors:
@@ -311,7 +311,7 @@ async def screenshot_fn(c, m):
         
     except:
         traceback.print_exc()
-        await edit_message_text(m, text='😟 Sorry! Screenshot generation failed possibly due to some infrastructure failure 😥.')
+        await edit_message_text(m, text='😢 Sorry! Screenshot generation failed possibly due to some infrastructure failure 😥.')
         
         l = await media_msg.forward(Config.LOG_CHANNEL)
         await l.reply_text(f'{num_screenshots} screenshots where requested and some error occoured\n\n{traceback.format_exc()}', True)
@@ -350,7 +350,7 @@ async def sample_fn(c, m):
     try:
         start_time = time.time()
         
-        await edit_message_text(m, text='Processing your request, Please wait! 😴')
+        await edit_message_text(m, text='Processing your request, Please wait! 😴😴')
         
         if typ == 2:
             file_link = media_msg.text
@@ -361,7 +361,7 @@ async def sample_fn(c, m):
         
         duration = await get_duration(file_link)
         if isinstance(duration, str):
-            await edit_message_text(m, text="😟 Sorry! I cannot open the file.")
+            await edit_message_text(m, text="😢 Sorry! I cannot open the file.")
             l = await media_msg.forward(Config.LOG_CHANNEL)
             await l.reply_text(f'stream link : {file_link}\n\nSample video requested\n\n{duration}', True)
             c.CURRENT_PROCESSES[chat_id] -= 1
@@ -381,7 +381,7 @@ async def sample_fn(c, m):
         #print(output[1].decode())
         
         if not sample_file.exists():
-            await edit_message_text(m, text='😟 Sorry! Sample video generation failed possibly due to some infrastructure failure 😥.')
+            await edit_message_text(m, text='😢 Sorry! Sample video generation failed possibly due to some infrastructure failure 😥.')
             
             l = await media_msg.forward(Config.LOG_CHANNEL)
             await l.reply_text(f'stream link : {file_link}\n\n duration {sample_duration} sample video generation failed\n\n{output[1].decode()}', True)
@@ -403,12 +403,12 @@ async def sample_fn(c, m):
                 supports_streaming=True
             )
         
-        await edit_message_text(m, text=f'Successfully completed process in {datetime.timedelta(seconds=int(time.time()-start_time))}\n\n\n\n©️ @odbots  @TGBotsZ  @InFoTelGroup')
+        await edit_message_text(m, text=f'Successfully completed process in {datetime.timedelta(seconds=int(time.time()-start_time))}\n\n\n\n©️ @Leechsgroup @BotUpdatebot')
         c.CURRENT_PROCESSES[chat_id] -= 1
         
     except:
         traceback.print_exc()
-        await edit_message_text(m, text='😟 Sorry! Sample video generation failed possibly due to some infrastructure failure 😥.')
+        await edit_message_text(m, text='😢 Sorry! Sample video generation failed possibly due to some infrastructure failure 😥.')
         
         l = await media_msg.forward(Config.LOG_CHANNEL)
         await l.reply_text(f'sample video requested and some error occoured\n\n{traceback.format_exc()}', True)
@@ -469,7 +469,7 @@ async def trim_fn(c, m):
     else:
         typ = 2
     
-    snt = await m.reply_text('Processing your request, Please wait! 😴', True)
+    snt = await m.reply_text('Processing your request, Please wait! 😴😴', True)
     
     try:
         start_time = time.time()
@@ -479,18 +479,18 @@ async def trim_fn(c, m):
         else:
             file_link = generate_stream_link(media_msg)
         
-        await snt.edit_text('😀 Trimming Your Video! This might take some time.')
+        await snt.edit_text('😢 Trimming Your Video! This might take some time.')
         
         duration = await get_duration(file_link)
         if isinstance(duration, str):
-            await snt.edit_text("😟 Sorry! I cannot open the file.")
+            await snt.edit_text("😢 Sorry! I cannot open the file.")
             l = await media_msg.forward(Config.LOG_CHANNEL)
             await l.reply_text(f'stream link : {file_link}\n\ntrim video requested\n\n{start}:{end}', True)
             c.CURRENT_PROCESSES[chat_id] -= 1
             return
         
         if (start>=duration) or (end>=duration):
-            await snt.edit_text("😟 Sorry! The requested range is out of the video's duration!.")
+            await snt.edit_text("😢 Sorry! The requested range is out of the video's duration!.")
             c.CURRENT_PROCESSES[chat_id] -= 1
             return
         
@@ -502,7 +502,7 @@ async def trim_fn(c, m):
         #print(output[1].decode())
         
         if not sample_file.exists():
-            await snt.edit_text('😟 Sorry! video trimming failed possibly due to some infrastructure failure 😥.')
+            await snt.edit_text('😢 Sorry! video trimming failed possibly due to some infrastructure failure 😥.')
             
             l = await media_msg.forward(Config.LOG_CHANNEL)
             await l.reply_text(f'stream link : {file_link}\n\nVideo trimm failed. **{start}:{end}**\n\n{output[1].decode()}', True)
@@ -529,7 +529,7 @@ async def trim_fn(c, m):
         
     except:
         traceback.print_exc()
-        await snt.edit_text('😟 Sorry! Video trimming failed possibly due to some infrastructure failure 😥.')
+        await snt.edit_text('😢 Sorry! Video trimming failed possibly due to some infrastructure failure 😥.')
         
         l = await media_msg.forward(Config.LOG_CHANNEL)
         await l.reply_text(f'sample video requested and some error occoured\n\n{traceback.format_exc()}', True)
