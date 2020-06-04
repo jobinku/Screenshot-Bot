@@ -201,7 +201,7 @@ async def screenshot_fn(c, m):
     media_msg = m.message.reply_to_message
     #print(media_msg)
     if media_msg.empty:
-        await edit_message_text(m, text='Why did you delete the file 😠, Now i cannot help you 😒.')
+        await edit_message_text(m, text='Why did you delete the file 😠, Now i cannot help you 😐.')
         c.CURRENT_PROCESSES[chat_id] -= 1
         return
     
